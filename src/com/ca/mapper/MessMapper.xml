@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.ca.mapper.IMessDAO">
+
+<insert id="save" keyProperty="id" useGeneratedKeys="true" parameterType="com.ca.domain.Mess">
+                                  
+  insert into mess(from_user,to_user,message,status_id,create_time) 
+                   values
+                   (#{from_user},#{to_user},#{message},#{status_id},null)
+</insert>
+<select id="findbyUserId" resultType="com.ca.domain.Mess" parameterType="string">
+  select id,from_user,to_user,message,status_id,create_time from mess 
+                                     where to_user=#{userId} and status_id='1'
+</select>
+
+<update id="updateStatus" parameterType="string">
+    update mess set status_id='0' where to_user=#{userId} and status_id='1'
+</update>
+
+
+</mapper>

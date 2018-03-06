@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.ca.mapper.IUserStatusDAO">
+
+	<insert id="save" keyProperty="id" useGeneratedKeys="true"
+		parameterType="com.ca.domain.UserStatus">
+
+		insert into
+		userstatus(userid,statusid,publickey,privatekey,authstarttime,authendtime,mailverify,mailverifytime)
+		values
+		(#{userId},#{statusId},#{publicKey},#{privateKey},#{authStartTime,jdbcType=TIMESTAMP},#{authEndTime,jdbcType=TIMESTAMP},#{mailVerify},#{mailVerifyTime})
+	</insert>
+	<select id="findByUserId" resultType="com.ca.domain.UserStatus"
+		parameterType="long">
+		select * from userstatus where userid=#{userId}
+	</select>
+
+	<update id="updateStatus">
+		update userstatus set statusid = #{1} where id = #{0};
+	
+	</update>
+</mapper>

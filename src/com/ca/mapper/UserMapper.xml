@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.ca.mapper.IUserDAO">
+
+	<select id="findByName" parameterType="string" resultType="com.ca.domain.User">
+		select id,username,password from user where username=#{name}
+	</select>
+
+	<insert id="save" parameterType="com.ca.domain.User" useGeneratedKeys="true" keyProperty="id">
+		insert into user(username,password) values (#{username},#{password})
+	</insert>
+     
+     <select id="findVerify" parameterType="string" resultType="com.ca.domain.User"> 
+        select verify from user where username=#{name}
+     </select>
+</mapper>
+
+

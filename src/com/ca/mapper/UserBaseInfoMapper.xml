@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.ca.mapper.IUserBaseInfoDAO">
+
+	<select id="findByUserId" parameterType="long" resultType="com.ca.domain.UserBaseInfo">
+		select * from userbaseinfo where userid=#{userId}
+	</select>
+
+	<insert id="save" parameterType="com.ca.domain.UserBaseInfo" useGeneratedKeys="true" keyProperty="id">
+	
+		insert into userbaseinfo(userid,tel) values (#{userId},#{tel})
+	</insert>
+
+</mapper>
+
+

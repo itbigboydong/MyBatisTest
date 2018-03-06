@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="com.ca.util.C3P0DataSourceFactory">
+				<property name="driverClass" value="com.mysql.jdbc.Driver" />
+
+
+				<property name="jdbcUrl" value="jdbc:mysql://192.168.0.168:3306/imtest" />
+
+				<property name="user" value="root" />
+				<property name="password" value="root" />
+
+				<!-- 初始化连接池中的连接数，取值应在minPoolSize与maxPoolSize之间，默认为20 -->
+				<property name="initialPoolSize" value="5" />
+				<!--连接池中保留的最大连接数。默认值: 10 -->
+				<property name="maxPoolSize" value="300" />
+				<!-- 连接池中保留的最小连接数，默认为：3 -->
+				<property name="minPoolSize" value="3" />
+				<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。默认值: 5 -->
+				<property name="acquireIncrement" value="2" />
+				<!--最大空闲时间，60秒内未使用则连接被丢弃。若为0则永不丢弃。默认值: 0 -->
+				<property name="maxIdleTime" value="60" />
+				<property name="maxIdleTimeExcessConnections" value="1200" />
+				<property name="maxConnectionAge" value="27000" />
+				<property name="maxStatements" value="500" />
+				<property name="maxStatementsPerConnection" value="50" />
+				<property name="numHelperThreads" value="5" />
+				<property name="preferredTestQuery" value="SELECT 1" />
+
+
+
+				<!--连接池中保留的最大连接数。Default: 10 -->
+				<!-- <property name="poolMaximumActiveConnections" value="10"></property> -->
+
+
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/ca/mapper/UserMapper.xml" />
+		<mapper resource="com/ca/mapper/MessMapper.xml" />
+		<mapper resource="com/ca/mapper/UserStatusMapper.xml" />
+		<mapper resource="com/ca/mapper/UserBaseInfoMapper.xml" />
+	</mappers>
+</configuration>
