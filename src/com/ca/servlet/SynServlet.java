@@ -39,7 +39,7 @@ public class SynServlet extends HttpServlet {
 			return;
 		}
 
-		final Thread thread = new Thread() {
+		final Thread thread = new Thread() {  //创建一个线程
 
 			@Override
 			public void run() {
@@ -55,7 +55,7 @@ public class SynServlet extends HttpServlet {
 
 		};
 
-		thread.start();
+		thread.start();   //启动这个线程，这个线程的任务就是阻塞4秒，为的是下面的执行thread.join()，阻塞main线程4秒钟
 
 		MessageListener lis = new MessageListener() {
 
